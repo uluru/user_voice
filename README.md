@@ -6,15 +6,11 @@ CakePHP user_voice plugin.
 Setup
 ------
 
-* bootstrap.php
+app/Config/bootstrap.php
 
     CakePlugin::load('UserVoice');
 
-* app/Config/email.php
-
-    cp user_voice/Config/email.php.sample app/Config/email.php
-
-* app/View/Layouts/default.ctp
+app/View/Layouts/default.ctp
 
     echo $this->Html->css('UserVoice.uservoice.css');
     echo $this->Html->script('//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js');
@@ -25,6 +21,10 @@ Setup
     });
     _EOL_
     );
+
+app/Config/email.php
+
+    $ cp user_voice/Config/email.php.sample app/Config/email.php
 
 License
 ------
