@@ -1,0 +1,70 @@
+#user_voice {
+    overflow: hidden;
+    position: fixed;
+    right: 0;
+    top: 96px;
+    z-index: 10000;
+}
+
+#user_voice_handle {
+    width: 32px;
+    height: 145px;
+    background: #00cbeb;
+    float: left;
+    cursor: pointer;
+}
+
+#user_voice_handle > p {
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 20px;
+    padding: 0 7px;
+    margin-top: 5px;
+}
+
+#user_voice_iframe {
+    width: 230px;
+    height: 315px;
+    background: #fff;
+    border-color: #00cbeb;
+    border-width: 1px 0 1px 1px;
+    border-style: solid;
+}
+
+body#uservoice {
+    padding: 0;
+    margin: 0;
+    background: #fff;
+}
+
+body#uservoice div#content {
+    margin: 10px;
+}
+
+textarea#UserVoiceMessage {
+    width: 200px;
+    height: 180px;
+}
+
+form#InquiryUserVoiceForm div.btn_red {
+    margin: 10px 0 5px 0;
+    width: 200px;
+}
+
+form#InquiryUserVoiceForm div.btn_red input {
+    font-size: 108%;
+    padding: 3px;
+}
+
+body#uservoice p {
+    width: 210px;
+    font-weight: bold;
+    font-size: 93%;
+    margin-bottom: 5px;
+}
+
+body#uservoice p.footer {
+    font-size: 76.9%;
+    font-weight: normal;
+}

@@ -1,0 +1,12 @@
+<?php
+
+class EmailConfig {
+    public $user_voice = array(
+        'transport' => 'Mail',
+        'from'      => array('info@example.com'),
+        'to'        => array('info@example.com'),
+        'subject'   => 'ユーザーボイス',
+        'sendAs'    => 'text',
+        'template'  => 'UserVoice.user_voice',
+    );
+}
