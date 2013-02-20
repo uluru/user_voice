@@ -26,3 +26,5 @@
     };
 
 })(jQuery);
+
+$(document).ready(function() { $.user_voice(); });
