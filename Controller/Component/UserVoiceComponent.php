@@ -11,8 +11,11 @@ class UserVoiceComponent extends Component {
         'UserVoice.jQuery.user_voice.js',
     );
 
-    public function beforeRender(controller $controller)
+    public function beforeRender(Controller $controller)
     {
+        if ($controller->name === 'UserVoice') {
+            return;
+        }
         $controller->helpers[] = 'UserVoice.UserVoice';
 
         $controller->set('userVoice.css', $this->css);

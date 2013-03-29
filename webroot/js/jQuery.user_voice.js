@@ -1,26 +1,13 @@
 (function() {
     $(function() {
 
-        var domain = location.hostname;
-        var framesrc = 'http://' + domain + '/user_voice/';
-
-        $userVoiceDiv    = $('<div>').attr('id', 'user_voice');
-        $userVoiceHandle = $('<div>').attr('id', 'user_voice_handle');
-        $userVoiceHandle.append($('<p>').text('ご意見 ご提案'));
-
+        var $userVoiceIframe = $('#user_voice_iframe');
+        var $userVoiceHandle = $('#user_voice_handle');
         $userVoiceHandle.click(function() {
-            $("#user_voice_iframe").animate({
+            $userVoiceIframe.animate({
                 width: "toggle"
             }, 'fast');
         });
-
-        $userVoiceIframe = $('<iframe>').attr('src', framesrc)
-                                        .attr('id', 'user_voice_iframe')
-                                        .attr('scrolling', 'no');
-
-        $userVoiceDiv.append($userVoiceHandle);
-        $userVoiceDiv.append($userVoiceIframe);
-        $('body').prepend($userVoiceDiv);
 
         $("#user_voice_iframe").hide();
     });
