@@ -1,5 +1,5 @@
-(function ($) {
-    jQuery.user_voice = function() {
+(function() {
+    $(function() {
 
         var domain = location.hostname;
         var framesrc = 'http://' + domain + '/user_voice/';
@@ -23,8 +23,6 @@
         $('body').prepend($userVoiceDiv);
 
         $("#user_voice_iframe").hide();
-    };
+    });
+}).call(this);
 
-})(jQuery);
-
-$(document).ready(function() { $.user_voice(); });
