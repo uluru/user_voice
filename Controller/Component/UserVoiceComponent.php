@@ -7,8 +7,8 @@ class UserVoiceComponent extends Component {
     );
 
     public $javascript = array(
-		'//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js',
-		'UserVoice.jQuery.user_voice.js',
+        '//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js',
+        'UserVoice.jQuery.user_voice.js',
     );
 
     public function beforeRender(controller $controller)

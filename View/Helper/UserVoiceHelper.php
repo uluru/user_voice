@@ -16,7 +16,7 @@ class UserVoiceHelper extends AppHelper {
         }
 
         if (isset($view->viewVars['userVoice.javascript'])) {
-            foreach ($view->viewVars as $script) {
+            foreach ($view->viewVars['userVoice.javascript'] as $script) {
                 $head .= $this->Html->script($script);
             }
         }
