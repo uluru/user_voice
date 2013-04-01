@@ -44,8 +44,9 @@ class UserVoiceController extends UserVoiceAppController
 
         if ($this->request->is('post')) {
 
-            $this->UserVoice->set($this->request->data);
-            if ($this->UserVoice->validates()) {
+            $this->UserVoiceModel = ClassRegistry::init('UserVoice.UserVoice');
+            $this->UserVoiceModel->set($this->request->data);
+            if ($this->UserVoiceModel->validates()) {
 
                 // ユーザーエージェントをセットする
                 $this->request->data['UserVoice']['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
