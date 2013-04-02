@@ -1,4 +1,4 @@
-#user_voice {
+#uservoice_sidebar {
     overflow: hidden;
     position: fixed;
     right: 0;
@@ -6,7 +6,7 @@
     z-index: 10000;
 }
 
-#user_voice_handle {
+#uservoice_handle {
     width: 32px;
     height: 145px;
     background: #00cbeb;
@@ -14,7 +14,7 @@
     cursor: pointer;
 }
 
-#user_voice_handle > p {
+#uservoice_handle > p {
     color: white;
     font-weight: bold;
     font-size: 18px;
@@ -23,13 +23,23 @@
     margin-top: 5px;
 }
 
-#user_voice_iframe {
+#uservoice_voice {
+    float: right;
+    display: none;
     width: 230px;
     height: 315px;
+    overflow: hidden;
     background: #fff;
     border-color: #00cbeb;
     border-width: 1px 0 1px 1px;
     border-style: solid;
+ }
+
+#uservoice_iframe {
+    display: none;
+    border: none;
+    width: 100%;
+    height: 100%;
 }
 
 body#uservoice {
