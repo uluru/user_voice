@@ -33,14 +33,9 @@ class UserVoiceController extends UserVoiceAppController
         }
     }
 
-    public function index($status = null)
+    public function index($controller = null, $action = null)
     {
         $this->pageTitle = __('ご意見・ご提案', true);
-
-        if ($status == 'done') {
-            $this->render('done');
-            return;
-        }
 
         if ($this->request->is('post')) {
 
@@ -49,14 +44,16 @@ class UserVoiceController extends UserVoiceAppController
             if ($this->UserVoiceModel->validates()) {
 
                 // ユーザーエージェントをセットする
-                $this->request->data['UserVoice']['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
+                $this->request->data['UserVoice']['user_agent'] = env('HTTP_USER_AGENT');
 
                 // メールを送信する
                 $email = new CakeEmail();
                 $result = $email->config('user_voice')
                     ->viewVars(
                         array(
-                            'data' => $this->request->data
+                            'data' => $this->request->data,
+                            'controller' => $controller,
+                            'action' => $action,
                         )
                     )
                     ->send();
@@ -64,15 +61,18 @@ class UserVoiceController extends UserVoiceAppController
                 if ($result) {
                     $this->redirect(
                         array(
-                            'action' => 'index',
-                            'done'
+                            'action' => 'done'
                         )
                     );
                 }
 
-                $this->Session->setFlash('送信に失敗しました。時間を置いてもう一度送信してください。');
+                $this->Session->setFlash(__('送信に失敗しました。時間を置いてもう一度送信してください。'));
             }
         }
+    }
+
+    public function done()
+    {
     }
 
 }
