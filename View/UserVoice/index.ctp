@@ -1,10 +1,11 @@
-<div id="content">
+<div id="uservoice_content">
 <p>
     ご意見をお聞かせください。
 </p>
 <?php
 
     echo $this->Form->create(null, array(
+        'id' => 'uservoice_form',
         'controller' => 'user_voice',
     ));
 

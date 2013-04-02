@@ -38,23 +38,13 @@ body#uservoice {
     background: #fff;
 }
 
-body#uservoice div#content {
+#uservoice_content {
     margin: 10px;
 }
 
-textarea#UserVoiceMessage {
+#uservoice_form textarea {
     width: 200px;
     height: 180px;
-}
-
-form#InquiryUserVoiceForm div.btn_red {
-    margin: 10px 0 5px 0;
-    width: 200px;
-}
-
-form#InquiryUserVoiceForm div.btn_red input {
-    font-size: 108%;
-    padding: 3px;
 }
 
 body#uservoice p {
