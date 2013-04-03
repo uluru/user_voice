@@ -1,15 +1,20 @@
 (function() {
     $(function() {
 
-        var $userVoiceIframe = $('#user_voice_iframe');
-        var $userVoiceHandle = $('#user_voice_handle');
-        $userVoiceHandle.click(function() {
-            $userVoiceIframe.animate({
-                width: "toggle"
-            }, 'fast');
-        });
+        var $userVoiceVoice = $('#uservoice_voice');
+        var $userVoiceIframe = $('#uservoice_iframe');
+        var $userVoiceHandle = $('#uservoice_handle');
 
-        $("#user_voice_iframe").hide();
+        $userVoiceHandle.click(function() {
+            if ($userVoiceIframe.css('display') !== 'none') {
+                $userVoiceIframe.hide();
+            }
+            $userVoiceVoice.animate({
+                width: "toggle"
+            }, 'fast', function() {
+                $userVoiceIframe.show();
+            });
+        });
     });
 }).call(this);
 
