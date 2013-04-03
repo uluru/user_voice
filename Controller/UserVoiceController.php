@@ -35,7 +35,7 @@ class UserVoiceController extends UserVoiceAppController
 
     public function index($controller = null, $action = null)
     {
-        $this->pageTitle = __('ご意見・ご提案', true);
+        $this->pageTitle = __d('user_voice', 'ご意見・ご提案', true);
 
         if ($this->request->is('post')) {
 
@@ -66,7 +66,7 @@ class UserVoiceController extends UserVoiceAppController
                     );
                 }
 
-                $this->Session->setFlash(__('送信に失敗しました。時間を置いてもう一度送信してください。'));
+                $this->Session->setFlash(__d('user_voice', '送信に失敗しました。時間を置いてもう一度送信してください。'));
             }
         }
     }
