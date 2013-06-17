@@ -9,7 +9,6 @@
              Copyright 2012 ULURU.CO.,LTD. All Rights Reserved.
 
 */
-App::uses('CakeEmail', 'Network/Email');
 
 /**
  * Inquiries Controller
@@ -23,8 +22,9 @@ App::uses('CakeEmail', 'Network/Email');
 class UserVoiceController extends UserVoiceAppController
 {
     public $name = 'UserVoice';
-    public $components = array('Email');
-    public $layout = 'UserVoice.user_voice';
+    public $components = array('Email', 'RequestHandler');
+    public $uses = array('UserVoice.UserVoice');
+    public $layout = 'user_voice';
 
     public function beforeFilter()
     {
@@ -33,30 +33,27 @@ class UserVoiceController extends UserVoiceAppController
         }
     }
 
-    public function index($controller = null, $action = null)
-    {
+    public function index($controller = null, $action = null) {
         $this->pageTitle = __d('user_voice', 'ご意見・ご提案', true);
 
-        if ($this->request->is('post')) {
+        if ($this->RequestHandler->isPost()) {
+            $this->UserVoice->set($this->data);
+            if ($this->UserVoice->validates()) {
 
-            $this->UserVoiceModel = ClassRegistry::init('UserVoice.UserVoice');
-            $this->UserVoiceModel->set($this->request->data);
-            if ($this->UserVoiceModel->validates()) {
+                $this->data['UserVoice']['user_agent'] = env('HTTP_USER_AGENT');
 
-                // ユーザーエージェントをセットする
-                $this->request->data['UserVoice']['user_agent'] = env('HTTP_USER_AGENT');
+                Configure::load('email');
+                $emailSetting = Configure::read('UserVoice');
 
-                // メールを送信する
-                $email = new CakeEmail();
-                $result = $email->config('user_voice')
-                    ->viewVars(
-                        array(
-                            'data' => $this->request->data,
-                            'controller' => $controller,
-                            'action' => $action,
-                        )
-                    )
-                    ->send();
+                $this->Email->from = $emailSetting['from'];
+                $this->Email->to = $emailSetting['to'];
+                $this->Email->subject = $emailSetting['subject'];
+                $this->Email->sendAs = $emailSetting['sendAs'];
+                $this->Email->template = $emailSetting['template'];
+                $this->set('data', $this->data);
+                $this->set('controller', $controller);
+                $this->set('action', $action);
+                $result = $this->Email->send();
 
                 if ($result) {
                     $this->redirect(

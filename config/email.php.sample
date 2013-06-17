@@ -1,0 +1,9 @@
+<?php
+
+$config['UserVoice'] = array(
+    'from'      => 'info@example.com',
+    'to'        => 'info@example.com',
+    'subject'   => 'ユーザーボイス',
+    'sendAs'    => 'text',
+    'template'  => 'UserVoice.user_voice',
+);

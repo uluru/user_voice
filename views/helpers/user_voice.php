@@ -1,14 +1,12 @@
 <?php
 
-App::uses('AppHelper', 'View/Helper');
-
 class UserVoiceHelper extends AppHelper {
 
     public $helpers = array('Html');
 
     public function afterLayout()
     {
-        $view = $this->_View;
+        $view =& ClassRegistry::getObject('view');
         $head = '';
         $bottom = '';
         if (isset($view->viewVars['userVoice.css']) &&
@@ -16,11 +14,12 @@ class UserVoiceHelper extends AppHelper {
             $head .= $this->Html->css($view->viewVars['userVoice.css']);
         }
 
-        $sidebar = $view->element('UserVoice.user_voice_sidebar', array(
-                'controller' => $view->request->controller,
-                'action' => $view->request->action,
-                'named' => $view->request->named,
-                'pass' => $view->request->pass,
+        $sidebar = $view->element('user_voice_sidebar', array(
+                'plugin' => 'UserVoice',
+                'controller' => $view->params['controller'],
+                'action' => $view->params['action'],
+                'named' => $view->params['named'],
+                'pass' => $view->params['pass'],
             ));
         $bottom .= $sidebar;
 

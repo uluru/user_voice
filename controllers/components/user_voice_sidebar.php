@@ -1,23 +1,23 @@
 <?php
 
-class UserVoiceComponent extends Component {
+class UserVoiceSidebarComponent extends Object {
 
     public $settings = array(
         'css' => array(
-            'UserVoice.uservoice.css',
+            '/user_voice/css/uservoice.css',
         ),
         'javascript' => array(
             '//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js',
-            'UserVoice.jQuery.user_voice.js',
+            '/user_voice/js/jQuery.user_voice.js',
         ),
     );
 
-    public function __construct(ComponentCollection $collection, $settings = array())
+    public function __construct($settings = array())
     {
-        parent::__construct($collection, array_merge($this->settings, (array)$settings));
+        parent::__construct(array_merge($this->settings, (array)$settings));
     }
 
-    public function beforeRender(Controller $controller)
+    public function beforeRender(&$controller)
     {
         if ($controller->name === 'UserVoice') {
             return;
