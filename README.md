@@ -1,7 +1,7 @@
 user_voice
 ==========
 
-CakePHP user_voice plugin.
+CakePHP(2.x) user_voice plugin.
 
 Setup
 ------
