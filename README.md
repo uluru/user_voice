@@ -6,14 +6,14 @@ CakePHP user_voice plugin. For 1.3.x
 Setup
 ------
 
-app/app_controller.php
+**app/app_controller.php**
 
-<?php
-class AppController extends Controller {
-    public $components = array('UserVoice.UserVoiceSidebar');
-}
+    <?php
+    class AppController extends Controller {
+        public $components = array('UserVoice.UserVoiceSidebar');
+    }
 
-app/Config/email.php
+**app/Config/email.php**
 
     $ cp user_voice/config/email.php.sample app/config/email.php
 
